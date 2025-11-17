@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("Clone Repo") {
             steps {
-                git 'https://github.com/ahmedelmasry2002/CI-CD-Pipeline-with-Jenkins-on-Kubernetes'
+                git branch: 'main', url: 'https://github.com/ahmedelmasry2002/CI-CD-Pipeline-with-Jenkins-on-Kubernetes'
             }
         }
 
@@ -21,7 +21,7 @@ pipeline {
 
         stage("Login to Docker Hub") {
             steps {
-                sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u mkadermasry2002 --password-masry1162002"
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
 
